@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CRIMSDKCore'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'CRIM-SDK-Core'
 
 # This description is used to generate tags and improve search results.
@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
   iOS版本IM SDK 可以轻松打造具备聊天、社交功能的app。
                        DESC
 
-  s.homepage         = 'https://github.com/cloudroomSDK/crim-sdk-core-ios'
+  s.homepage         = 'https://github.com/cloudroomSDK/CRIM-SDK-CORE-iOS'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'CRIMSDKCore' => 'https://github.com/cloudroomSDK/crim-sdk-core-ios' }
-  s.source           = { :git => 'https://github.com/cloudroomSDK/crim-sdk-core-ios.git', :tag => s.version.to_s }
+  s.author           = { 'CRIMSDKCore' => 'https://github.com/cloudroomSDK/CRIM-SDK-CORE-iOS' }
+  s.source           = { :git => 'https://github.com/cloudroomSDK/CRIM-SDK-CORE-iOS.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '11.0'    
     
