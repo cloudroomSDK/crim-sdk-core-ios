@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CRIMSDKCore'
-  s.version          = '1.0.3'
+  s.version          = '2.7.1'
   s.summary          = 'CRIM-SDK-Core'
   s.description      = <<-DESC
   iOS版本IM SDK 可以轻松打造具备聊天、社交功能的app。
