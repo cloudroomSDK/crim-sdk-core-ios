@@ -107,17 +107,17 @@
 
 // skipped method OnFriendshipListenerSdk.OnFriendAdded with unsupported parameter or return types
 
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationAccepted with unsupported parameter or return types
-
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationAdded with unsupported parameter or return types
-
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationDeleted with unsupported parameter or return types
-
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationRejected with unsupported parameter or return types
-
 // skipped method OnFriendshipListenerSdk.OnFriendDeleted with unsupported parameter or return types
 
 // skipped method OnFriendshipListenerSdk.OnFriendInfoChanged with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqAccepted with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqAdded with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqDeleted with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqRejected with unsupported parameter or return types
 
 @end
 
@@ -177,6 +177,7 @@
 
 @protocol Crim_sdk_callbackOnUserListener <NSObject>
 - (void)onSelfInfoUpdated:(NSString* _Nullable)userInfo;
+- (void)onUserStatusChanged:(NSString* _Nullable)userOnlineStatus;
 @end
 
 @protocol Crim_sdk_callbackSendMsgCallBack <NSObject>
@@ -325,17 +326,17 @@ FOUNDATION_EXPORT id<Crim_sdk_callbackOnFriendshipListenerSdk> _Nullable Crim_sd
 
 // skipped method OnFriendshipListenerSdk.OnFriendAdded with unsupported parameter or return types
 
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationAccepted with unsupported parameter or return types
-
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationAdded with unsupported parameter or return types
-
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationDeleted with unsupported parameter or return types
-
-// skipped method OnFriendshipListenerSdk.OnFriendApplicationRejected with unsupported parameter or return types
-
 // skipped method OnFriendshipListenerSdk.OnFriendDeleted with unsupported parameter or return types
 
 // skipped method OnFriendshipListenerSdk.OnFriendInfoChanged with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqAccepted with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqAdded with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqDeleted with unsupported parameter or return types
+
+// skipped method OnFriendshipListenerSdk.OnFriendReqRejected with unsupported parameter or return types
 
 @end
 
@@ -415,6 +416,7 @@ FOUNDATION_EXPORT id<Crim_sdk_callbackOnFriendshipListenerSdk> _Nullable Crim_sd
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (void)onSelfInfoUpdated:(NSString* _Nullable)userInfo;
+- (void)onUserStatusChanged:(NSString* _Nullable)userOnlineStatus;
 @end
 
 @interface Crim_sdk_callbackSendMsgCallBack : NSObject <goSeqRefInterface, Crim_sdk_callbackSendMsgCallBack> {

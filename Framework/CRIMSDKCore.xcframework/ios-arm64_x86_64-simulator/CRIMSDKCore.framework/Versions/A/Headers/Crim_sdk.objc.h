@@ -12,28 +12,77 @@
 
 #include "Crim_sdk_callback.objc.h"
 
-@protocol Crim_sdkCaller;
-@class Crim_sdkCaller;
+@class Crim_sdkLoginMgr;
 
-@protocol Crim_sdkCaller <NSObject>
-// skipped method Caller.BaseCaller with unsupported parameter or return types
+@interface Crim_sdkLoginMgr : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
 
-// skipped method Caller.SendMessageCaller with unsupported parameter or return types
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nullable instancetype)init;
+// skipped method LoginMgr.BaseCtx with unsupported parameter or return types
+
+// skipped method LoginMgr.Context with unsupported parameter or return types
+
+// skipped method LoginMgr.Conversation with unsupported parameter or return types
+
+- (void)exit;
+// skipped method LoginMgr.File with unsupported parameter or return types
+
+// skipped method LoginMgr.Friend with unsupported parameter or return types
+
+// skipped method LoginMgr.Full with unsupported parameter or return types
+
+// skipped method LoginMgr.GetLoginStatus with unsupported parameter or return types
+
+- (NSString* _Nonnull)getLoginUserID;
+- (NSString* _Nonnull)getToken;
+// skipped method LoginMgr.Group with unsupported parameter or return types
+
+// skipped method LoginMgr.ImConfig with unsupported parameter or return types
+
+// skipped method LoginMgr.InitSDK with unsupported parameter or return types
+
+// skipped method LoginMgr.Login with unsupported parameter or return types
+
+// skipped method LoginMgr.Logout with unsupported parameter or return types
+
+// skipped method LoginMgr.NetworkStatusChanged with unsupported parameter or return types
+
+- (void)setAdvancedMsgListener:(id<Crim_sdk_callbackOnAdvancedMsgListener> _Nullable)advancedMsgListener;
+// skipped method LoginMgr.SetAppBackgroundStatus with unsupported parameter or return types
+
+- (void)setBatchMsgListener:(id<Crim_sdk_callbackOnBatchMsgListener> _Nullable)batchMsgListener;
+- (void)setBusinessListener:(id<Crim_sdk_callbackOnCustomBusinessListener> _Nullable)listener;
+- (void)setConnListener:(id<Crim_sdk_callbackOnConnListener> _Nullable)connListener;
+- (void)setConversationListener:(id<Crim_sdk_callbackOnConversationListener> _Nullable)conversationListener;
+- (void)setFriendListener:(id<Crim_sdk_callbackOnFriendshipListener> _Nullable)friendListener;
+- (void)setGrpListener:(id<Crim_sdk_callbackOnGrpListener> _Nullable)groupListener;
+- (void)setListenerForService:(id<Crim_sdk_callbackOnListenerForService> _Nullable)listener;
+- (void)setMsgKvInfoListener:(id<Crim_sdk_callbackOnMsgKvInfoListener> _Nullable)messageKvInfoListener;
+- (void)setSignalingListener:(id<Crim_sdk_callbackOnSignalingListener> _Nullable)userListener;
+- (void)setSignalingListenerForService:(id<Crim_sdk_callbackOnSignalingListener> _Nullable)userListener;
+- (void)setUserListener:(id<Crim_sdk_callbackOnUserListener> _Nullable)userListener;
+// skipped method LoginMgr.Signaling with unsupported parameter or return types
+
+// skipped method LoginMgr.Third with unsupported parameter or return types
+
+- (void)unInitSDK;
+- (void)updateLoginMgrInfoAddr:(NSString* _Nullable)wsAddr svrAddr:(NSString* _Nullable)svrAddr;
+// skipped method LoginMgr.User with unsupported parameter or return types
 
 @end
 
+FOUNDATION_EXPORT const int64_t Crim_sdkLogged;
+FOUNDATION_EXPORT const int64_t Crim_sdkLogging;
+FOUNDATION_EXPORT const int64_t Crim_sdkLogoutStatus;
+
 @interface Crim_sdk : NSObject
-+ (NSError* _Nullable) errNotSetCallback;
-+ (void) setErrNotSetCallback:(NSError* _Nullable)v;
-
-+ (NSError* _Nullable) errNotSetFunc;
-+ (void) setErrNotSetFunc:(NSError* _Nullable)v;
-
-// skipped variable UserForSDK with unsupported type: *crim_sdk/internal/login.LoginMgr
-
-// skipped variable UserRouterMap with unsupported type: map[string]*crim_sdk/internal/login.LoginMgr
-
-// skipped variable UserSDKRwLock with unsupported type: sync.RWMutex
+/**
+ * Client-independent user class
+ */
++ (Crim_sdkLoginMgr* _Nullable) userForSDK;
++ (void) setUserForSDK:(Crim_sdkLoginMgr* _Nullable)v;
 
 @end
 
@@ -45,22 +94,16 @@ FOUNDATION_EXPORT void Crim_sdkAddBlack(id<Crim_sdk_callbackBase> _Nullable call
 
 FOUNDATION_EXPORT void Crim_sdkAddFriend(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDReqMsg);
 
-// skipped function BaseCaller with unsupported parameter or return types
-
-
 FOUNDATION_EXPORT void Crim_sdkChangeGrpMemberMute(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable userID, long mutedSeconds);
 
 FOUNDATION_EXPORT void Crim_sdkChangeGrpMute(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, BOOL isMute);
 
 FOUNDATION_EXPORT void Crim_sdkCheckFriend(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDList);
 
-// skipped function CheckResourceLoad with unsupported parameter or return types
-
-
 /**
- * CheckToken checks user authentication token.
+ * CheckResourceLoad checks the SDK is resource load status.
  */
-FOUNDATION_EXPORT BOOL Crim_sdkCheckToken(NSString* _Nullable userID, NSString* _Nullable token, NSString* _Nullable operationID, NSError* _Nullable* _Nullable error);
+FOUNDATION_EXPORT BOOL Crim_sdkCheckResourceLoad(Crim_sdkLoginMgr* _Nullable uSDK, NSString* _Nullable funcName, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT void Crim_sdkClearConversationAndDeleteAllMsg(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
 
@@ -74,8 +117,6 @@ FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateCustomMsg(NSString* _Nullable
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateFaceMsg(NSString* _Nullable operationID, long index, NSString* _Nullable data);
 
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateFileMsg(NSString* _Nullable operationID, NSString* _Nullable filePath, NSString* _Nullable fileName);
-
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateFileMsgByURL(NSString* _Nullable operationID, NSString* _Nullable fileBaseInfo);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateFileMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable fileFullPath, NSString* _Nullable fileName);
@@ -84,9 +125,7 @@ FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateForwardMsg(NSString* _Nullabl
 
 FOUNDATION_EXPORT void Crim_sdkCreateGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupReqInfo);
 
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateImageMsg(NSString* _Nullable operationID, NSString* _Nullable imagePath);
-
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateImageMsgByURL(NSString* _Nullable operationID, NSString* _Nullable sourcePicture, NSString* _Nullable bigPicture, NSString* _Nullable snapshotPicture);
+FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateImageMsgByURL(NSString* _Nullable operationID, NSString* _Nullable sourcePath, NSString* _Nullable sourcePicture, NSString* _Nullable bigPicture, NSString* _Nullable snapshotPicture);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateImageMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable imageFullPath);
 
@@ -96,8 +135,6 @@ FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateMergerMsg(NSString* _Nullable
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateQuoteMsg(NSString* _Nullable operationID, NSString* _Nullable text, NSString* _Nullable message);
 
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsg(NSString* _Nullable operationID, NSString* _Nullable soundPath, int64_t duration);
-
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgByURL(NSString* _Nullable operationID, NSString* _Nullable soundBaseInfo);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable soundPath, int64_t duration);
@@ -106,21 +143,15 @@ FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateTextAtMsg(NSString* _Nullable
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateTextMsg(NSString* _Nullable operationID, NSString* _Nullable text);
 
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateVideoMsg(NSString* _Nullable operationID, NSString* _Nullable videoPath, NSString* _Nullable videoType, int64_t duration, NSString* _Nullable snapshotPath);
-
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateVideoMsgByURL(NSString* _Nullable operationID, NSString* _Nullable videoBaseInfo);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateVideoMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable videoFullPath, NSString* _Nullable videoType, int64_t duration, NSString* _Nullable snapshotFullPath);
-
-FOUNDATION_EXPORT void Crim_sdkDeleteAllConversationFromLocal(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
 FOUNDATION_EXPORT void Crim_sdkDeleteAllMsgFromLocal(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
 FOUNDATION_EXPORT void Crim_sdkDeleteAllMsgFromLocalAndSvr(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
 FOUNDATION_EXPORT void Crim_sdkDeleteConversationAndDeleteAllMsg(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
-
-FOUNDATION_EXPORT void Crim_sdkDeleteConversationFromLocal(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
 
 FOUNDATION_EXPORT void Crim_sdkDeleteFriend(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable friendUserID);
 
@@ -146,6 +177,9 @@ FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkGetConversationIDBySessionType(NSSt
 
 FOUNDATION_EXPORT void Crim_sdkGetConversationListSplit(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, long offset, long count);
 
+/**
+ * deprecated
+ */
 FOUNDATION_EXPORT void Crim_sdkGetConversationRecvMsgOpt(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationIDList);
 
 FOUNDATION_EXPORT void Crim_sdkGetFriendList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
@@ -189,22 +223,30 @@ FOUNDATION_EXPORT void Crim_sdkGetSpecifiedGrpMembersInfo(id<Crim_sdk_callbackBa
 
 FOUNDATION_EXPORT void Crim_sdkGetSpecifiedGrpsInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupIDList);
 
+/**
+ * GetSubscribeUsersStatus Get the online status of subscribers.
+ */
+FOUNDATION_EXPORT void Crim_sdkGetSubscribeUsersStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
+
 FOUNDATION_EXPORT void Crim_sdkGetTotalUnreadMsgCount(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
-// skipped function GetUserWorker with unsupported parameter or return types
-
+/**
+ * GetUserStatus Get the online status of users.
+ */
+FOUNDATION_EXPORT void Crim_sdkGetUserStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
 FOUNDATION_EXPORT void Crim_sdkGetUsersInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
 /**
- * GetUsersInfo obtains the information about multiple users.
+ * GetUsersInfoFromSrv obtains the information about multiple users.
  */
 FOUNDATION_EXPORT void Crim_sdkGetUsersInfoFromSrv(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
+FOUNDATION_EXPORT void Crim_sdkGetUsersInfoWithCache(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs, NSString* _Nullable groupID);
+
+FOUNDATION_EXPORT void Crim_sdkHideAllConversations(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
+
 FOUNDATION_EXPORT void Crim_sdkHideConversation(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
-
-// skipped function InitOnce with unsupported parameter or return types
-
 
 FOUNDATION_EXPORT BOOL Crim_sdkInitSDK(NSString* _Nullable operationID, NSString* _Nullable config);
 
@@ -220,7 +262,7 @@ FOUNDATION_EXPORT void Crim_sdkJoinGrp(id<Crim_sdk_callbackBase> _Nullable callb
 
 FOUNDATION_EXPORT void Crim_sdkKickGrpMember(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable reason, NSString* _Nullable userIDList);
 
-FOUNDATION_EXPORT void Crim_sdkLogin(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userID, NSString* _Nullable token);
+FOUNDATION_EXPORT void Crim_sdkLogin(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userID, NSString* _Nullable token, NSString* _Nullable appId, NSString* _Nullable appSecret);
 
 FOUNDATION_EXPORT void Crim_sdkLogout(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
@@ -232,6 +274,11 @@ FOUNDATION_EXPORT void Crim_sdkMarkConversationMsgAsRead(id<Crim_sdk_callbackBas
 FOUNDATION_EXPORT void Crim_sdkMarkMsgsAsReadByMsgID(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable clientMsgIDs);
 
 FOUNDATION_EXPORT void Crim_sdkNetworkStatusChanged(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
+
+FOUNDATION_EXPORT Crim_sdkLoginMgr* _Nullable Crim_sdkNewLoginMgr(void);
+
+// skipped function ParseCRTokenAppID with unsupported parameter or return types
+
 
 FOUNDATION_EXPORT void Crim_sdkPinConversation(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, BOOL isPinned);
 
@@ -255,15 +302,7 @@ FOUNDATION_EXPORT void Crim_sdkSearchGrps(id<Crim_sdk_callbackBase> _Nullable ca
 
 FOUNDATION_EXPORT void Crim_sdkSearchLocalMsgs(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable searchParam);
 
-// skipped function SendMessageCaller with unsupported parameter or return types
-
-
 FOUNDATION_EXPORT void Crim_sdkSendMsg(id<Crim_sdk_callbackSendMsgCallBack> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable message, NSString* _Nullable recvID, NSString* _Nullable groupID, NSString* _Nullable offlinePushInfo);
-
-// skipped function SendMsgByBuffer with unsupported parameter or return types
-
-
-FOUNDATION_EXPORT void Crim_sdkSendMsgNotOss(id<Crim_sdk_callbackSendMsgCallBack> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable message, NSString* _Nullable recvID, NSString* _Nullable groupID, NSString* _Nullable offlinePushInfo);
 
 FOUNDATION_EXPORT void Crim_sdkSetAdvancedMsgListener(id<Crim_sdk_callbackOnAdvancedMsgListener> _Nullable listener);
 
@@ -273,7 +312,7 @@ FOUNDATION_EXPORT void Crim_sdkSetAppBadge(id<Crim_sdk_callbackBase> _Nullable c
 
 FOUNDATION_EXPORT void Crim_sdkSetBatchMsgListener(id<Crim_sdk_callbackOnBatchMsgListener> _Nullable listener);
 
-FOUNDATION_EXPORT void Crim_sdkSetConnListener(id<Crim_sdk_callbackOnConnListener> _Nullable connListener);
+FOUNDATION_EXPORT void Crim_sdkSetConnListener(id<Crim_sdk_callbackOnConnListener> _Nullable callback);
 
 FOUNDATION_EXPORT void Crim_sdkSetConversationBurnDuration(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, int32_t duration);
 
@@ -324,13 +363,41 @@ FOUNDATION_EXPORT void Crim_sdkSetMsgLocalEx(id<Crim_sdk_callbackBase> _Nullable
  */
 FOUNDATION_EXPORT void Crim_sdkSetSelfInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userInfo);
 
+FOUNDATION_EXPORT void Crim_sdkSetSignalingListener(id<Crim_sdk_callbackOnSignalingListener> _Nullable callback);
+
+FOUNDATION_EXPORT void Crim_sdkSetSignalingListenerForService(id<Crim_sdk_callbackOnSignalingListener> _Nullable callback);
+
 FOUNDATION_EXPORT void Crim_sdkSetUserListener(id<Crim_sdk_callbackOnUserListener> _Nullable listener);
+
+FOUNDATION_EXPORT void Crim_sdkSignalingAccept(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalAcceptReq);
+
+FOUNDATION_EXPORT void Crim_sdkSignalingCancel(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalCancelReq);
+
+FOUNDATION_EXPORT void Crim_sdkSignalingHungUp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalHungUpReq);
+
+FOUNDATION_EXPORT void Crim_sdkSignalingInvite(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalInviteReq);
+
+FOUNDATION_EXPORT void Crim_sdkSignalingInviteInGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalInviteInGroupReq);
+
+FOUNDATION_EXPORT void Crim_sdkSignalingReject(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalRejectReq);
+
+/**
+ * SubscribeUsersStatus Presence status of subscribed users.
+ */
+FOUNDATION_EXPORT void Crim_sdkSubscribeUsersStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
 FOUNDATION_EXPORT void Crim_sdkTransferGrpOwner(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable newOwnerUserID);
 
 FOUNDATION_EXPORT void Crim_sdkTypingStatusUpdate(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable recvID, NSString* _Nullable msgTip);
 
-FOUNDATION_EXPORT void Crim_sdkUpdateFcmToken(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDList);
+FOUNDATION_EXPORT void Crim_sdkUnInitSDK(NSString* _Nullable operationID);
+
+/**
+ * UnsubscribeUsersStatus Unsubscribe a user's presence.
+ */
+FOUNDATION_EXPORT void Crim_sdkUnsubscribeUsersStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
+
+FOUNDATION_EXPORT void Crim_sdkUpdateFcmToken(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable fcmToken, int64_t expireTime);
 
 /**
  * UpdateMsgSenderInfo updates the message sender's nickname and face URL.
@@ -339,20 +406,8 @@ FOUNDATION_EXPORT void Crim_sdkUpdateMsgSenderInfo(id<Crim_sdk_callbackBase> _Nu
 
 FOUNDATION_EXPORT void Crim_sdkUploadFile(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req, id<Crim_sdk_callbackUploadFileCallback> _Nullable progress);
 
-@class Crim_sdkCaller;
+FOUNDATION_EXPORT void Crim_sdkUploadLogs(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable uploadLogParams);
 
-/**
- * Caller is an interface that defines the SDK's basic and message sending caller.
- */
-@interface Crim_sdkCaller : NSObject <goSeqRefInterface, Crim_sdkCaller> {
-}
-@property(strong, readonly) _Nonnull id _ref;
-
-- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
-// skipped method Caller.BaseCaller with unsupported parameter or return types
-
-// skipped method Caller.SendMessageCaller with unsupported parameter or return types
-
-@end
+FOUNDATION_EXPORT void Crim_sdkWriteLog(NSString* _Nullable operationID, int32_t level, NSString* _Nullable content);
 
 #endif
