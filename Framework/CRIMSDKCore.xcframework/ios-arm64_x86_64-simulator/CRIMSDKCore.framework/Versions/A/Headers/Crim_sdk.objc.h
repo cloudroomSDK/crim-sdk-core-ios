@@ -135,6 +135,16 @@ FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateMergerMsg(NSString* _Nullable
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateQuoteMsg(NSString* _Nullable operationID, NSString* _Nullable text, NSString* _Nullable message);
 
+FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingAccept(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
+
+FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingCancel(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
+
+FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingHungUp(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
+
+FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingInvite(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
+
+FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingReject(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
+
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgByURL(NSString* _Nullable operationID, NSString* _Nullable soundBaseInfo);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable soundPath, int64_t duration);
@@ -368,18 +378,6 @@ FOUNDATION_EXPORT void Crim_sdkSetSignalingListener(id<Crim_sdk_callbackOnSignal
 FOUNDATION_EXPORT void Crim_sdkSetSignalingListenerForService(id<Crim_sdk_callbackOnSignalingListener> _Nullable callback);
 
 FOUNDATION_EXPORT void Crim_sdkSetUserListener(id<Crim_sdk_callbackOnUserListener> _Nullable listener);
-
-FOUNDATION_EXPORT void Crim_sdkSignalingAccept(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalAcceptReq);
-
-FOUNDATION_EXPORT void Crim_sdkSignalingCancel(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalCancelReq);
-
-FOUNDATION_EXPORT void Crim_sdkSignalingHungUp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalHungUpReq);
-
-FOUNDATION_EXPORT void Crim_sdkSignalingInvite(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalInviteReq);
-
-FOUNDATION_EXPORT void Crim_sdkSignalingInviteInGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalInviteInGroupReq);
-
-FOUNDATION_EXPORT void Crim_sdkSignalingReject(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable signalRejectReq);
 
 /**
  * SubscribeUsersStatus Presence status of subscribed users.
