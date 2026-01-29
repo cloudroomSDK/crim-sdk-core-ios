@@ -14,7 +14,7 @@
 
 @class Crim_sdkLoginMgr;
 
-@interface Crim_sdkLoginMgr : NSObject <goSeqRefInterface> {
+@interface Crim_sdkLoginMgr : NSObject <goSeqRefInterface, Crim_sdk_callbackOnSignalingListener> {
 }
 @property(strong, readonly) _Nonnull id _ref;
 
@@ -209,6 +209,8 @@ FOUNDATION_EXPORT void Crim_sdkGetBlackList(id<Crim_sdk_callbackBase> _Nullable 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkGetConversationIDBySessionType(NSString* _Nullable operationID, NSString* _Nullable sourceID, long sessionType);
 
 FOUNDATION_EXPORT void Crim_sdkGetConversationListSplit(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, long offset, long count);
+
+FOUNDATION_EXPORT int64_t Crim_sdkGetCurrentSvrTime(void);
 
 FOUNDATION_EXPORT void Crim_sdkGetFriendList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, BOOL filterBlack);
 

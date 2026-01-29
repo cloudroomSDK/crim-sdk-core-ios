@@ -162,16 +162,6 @@
 @end
 
 @protocol Crim_sdk_callbackOnSignalingListener <NSObject>
-- (void)onHangUp:(NSString* _Nullable)hangUpCallback;
-- (void)onInvitationCancelled:(NSString* _Nullable)invitationCancelledCallback;
-- (void)onInvitationTimeout:(NSString* _Nullable)invitationTimeoutCallback;
-- (void)onInviteeAccepted:(NSString* _Nullable)inviteeAcceptedCallback;
-- (void)onInviteeAcceptedByOtherDevice:(NSString* _Nullable)inviteeAcceptedCallback;
-- (void)onInviteeRejected:(NSString* _Nullable)inviteeRejectedCallback;
-- (void)onInviteeRejectedByOtherDevice:(NSString* _Nullable)inviteeRejectedCallback;
-- (void)onReceiveNewInvitation:(NSString* _Nullable)receiveNewInvitationCallback;
-- (void)onRoomParticipantConnected:(NSString* _Nullable)onRoomParticipantConnectedCallback;
-- (void)onRoomParticipantDisconnected:(NSString* _Nullable)onRoomParticipantDisconnectedCallback;
 @end
 
 @protocol Crim_sdk_callbackOnUserListener <NSObject>
@@ -428,16 +418,6 @@
 @property(strong, readonly) _Nonnull id _ref;
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
-- (void)onHangUp:(NSString* _Nullable)hangUpCallback;
-- (void)onInvitationCancelled:(NSString* _Nullable)invitationCancelledCallback;
-- (void)onInvitationTimeout:(NSString* _Nullable)invitationTimeoutCallback;
-- (void)onInviteeAccepted:(NSString* _Nullable)inviteeAcceptedCallback;
-- (void)onInviteeAcceptedByOtherDevice:(NSString* _Nullable)inviteeAcceptedCallback;
-- (void)onInviteeRejected:(NSString* _Nullable)inviteeRejectedCallback;
-- (void)onInviteeRejectedByOtherDevice:(NSString* _Nullable)inviteeRejectedCallback;
-- (void)onReceiveNewInvitation:(NSString* _Nullable)receiveNewInvitationCallback;
-- (void)onRoomParticipantConnected:(NSString* _Nullable)onRoomParticipantConnectedCallback;
-- (void)onRoomParticipantDisconnected:(NSString* _Nullable)onRoomParticipantDisconnectedCallback;
 @end
 
 @interface Crim_sdk_callbackOnUserListener : NSObject <goSeqRefInterface, Crim_sdk_callbackOnUserListener> {
