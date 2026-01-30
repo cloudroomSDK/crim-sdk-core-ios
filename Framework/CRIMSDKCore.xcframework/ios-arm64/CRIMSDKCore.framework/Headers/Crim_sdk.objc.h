@@ -148,16 +148,6 @@ FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateMergerMsg(NSString* _Nullable
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateQuoteMsg(NSString* _Nullable operationID, NSString* _Nullable text, NSString* _Nullable message);
 
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingAccept(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
-
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingCancel(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
-
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingHungUp(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
-
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingInvite(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
-
-FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSignalingReject(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
-
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgByURL(NSString* _Nullable operationID, NSString* _Nullable soundBaseInfo);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable soundPath, int64_t duration);
