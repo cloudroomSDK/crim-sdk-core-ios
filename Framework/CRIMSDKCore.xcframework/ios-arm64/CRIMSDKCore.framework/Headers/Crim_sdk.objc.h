@@ -20,24 +20,51 @@
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (nullable instancetype)init;
+/**
+ * AdvancedMsgListener 返回当前设置的高级消息监听器。
+ */
 - (id<Crim_sdk_callbackOnAdvancedMsgListener> _Nullable)advancedMsgListener;
+/**
+ * BatchMsgListener 返回当前设置的批量消息监听器。
+ */
 - (id<Crim_sdk_callbackOnBatchMsgListener> _Nullable)batchMsgListener;
+/**
+ * BusinessListener 返回当前设置的自定义业务监听器。
+ */
 - (id<Crim_sdk_callbackOnCustomBusinessListener> _Nullable)businessListener;
 // skipped method LoginMgr.Context with unsupported parameter or return types
 
 // skipped method LoginMgr.Conversation with unsupported parameter or return types
 
+/**
+ * ConversationListener 返回当前设置的会话监听器。
+ */
 - (id<Crim_sdk_callbackOnConversationListener> _Nullable)conversationListener;
+/**
+ * Exit 取消登录管理上下文，结束长连接与同步等协程。
+ */
 - (void)exit;
 // skipped method LoginMgr.File with unsupported parameter or return types
 
+/**
+ * FriendshipListener 返回当前设置的好友关系监听器。
+ */
 - (id<Crim_sdk_callbackOnFriendshipListener> _Nullable)friendshipListener;
 // skipped method LoginMgr.GetLoginStatus with unsupported parameter or return types
 
+/**
+ * GetLoginUserID 返回当前登录用户 ID。
+ */
 - (NSString* _Nonnull)getLoginUserID;
+/**
+ * GetToken 返回当前登录使用的 token。
+ */
 - (NSString* _Nonnull)getToken;
 // skipped method LoginMgr.Group with unsupported parameter or return types
 
+/**
+ * GroupListener 返回当前设置的群组监听器。
+ */
 - (id<Crim_sdk_callbackOnGrpListener> _Nullable)groupListener;
 // skipped method LoginMgr.ImConfig with unsupported parameter or return types
 
@@ -49,29 +76,71 @@
 
 // skipped method LoginMgr.LongConnMgr with unsupported parameter or return types
 
+/**
+ * MsgKvListener 返回当前设置的消息 KV 监听器。
+ */
 - (id<Crim_sdk_callbackOnMsgKvInfoListener> _Nullable)msgKvListener;
 // skipped method LoginMgr.NetworkStatusChanged with unsupported parameter or return types
 
 // skipped method LoginMgr.Relation with unsupported parameter or return types
 
+/**
+ * SetAdvancedMsgListener 设置高级消息监听器。
+ */
 - (void)setAdvancedMsgListener:(id<Crim_sdk_callbackOnAdvancedMsgListener> _Nullable)advancedMsgListener;
 // skipped method LoginMgr.SetAppBackgroundStatus with unsupported parameter or return types
 
+/**
+ * SetBatchMsgListener 设置批量消息监听器。
+ */
 - (void)setBatchMsgListener:(id<Crim_sdk_callbackOnBatchMsgListener> _Nullable)batchMsgListener;
+/**
+ * SetConnListener 设置连接状态监听器并触发资源初始化。
+ */
 - (void)setConnListener:(id<Crim_sdk_callbackOnConnListener> _Nullable)connListener;
+/**
+ * SetConversationListener 设置会话监听器。
+ */
 - (void)setConversationListener:(id<Crim_sdk_callbackOnConversationListener> _Nullable)conversationListener;
+/**
+ * SetCustomBusinessListener 设置自定义业务监听器。
+ */
 - (void)setCustomBusinessListener:(id<Crim_sdk_callbackOnCustomBusinessListener> _Nullable)listener;
+/**
+ * SetFriendshipListener 设置好友关系监听器。
+ */
 - (void)setFriendshipListener:(id<Crim_sdk_callbackOnFriendshipListener> _Nullable)friendshipListener;
+/**
+ * SetGrpListener 设置群组监听器。
+ */
 - (void)setGrpListener:(id<Crim_sdk_callbackOnGrpListener> _Nullable)groupListener;
+/**
+ * SetMsgKvInfoListener 设置消息 KV 监听器。
+ */
 - (void)setMsgKvInfoListener:(id<Crim_sdk_callbackOnMsgKvInfoListener> _Nullable)messageKvInfoListener;
+/**
+ * SetUserListener 设置用户监听器。
+ */
 - (void)setUserListener:(id<Crim_sdk_callbackOnUserListener> _Nullable)userListener;
+/**
+ * SignalingListener 返回当前设置的信令监听器。
+ */
 - (id<Crim_sdk_callbackOnSignalingListener> _Nullable)signalingListener;
 // skipped method LoginMgr.Third with unsupported parameter or return types
 
+/**
+ * UnInitSDK 反初始化 SDK：仅在未登录状态下清空全局配置与登录状态。
+ */
 - (void)unInitSDK;
+/**
+ * UpdateLoginMgrInfoAddr 更新 API 与 WebSocket 地址（用于动态切服）。
+ */
 - (void)updateLoginMgrInfoAddr:(NSString* _Nullable)wsAddr svrAddr:(NSString* _Nullable)svrAddr;
 // skipped method LoginMgr.User with unsupported parameter or return types
 
+/**
+ * UserListener 返回当前设置的用户监听器。
+ */
 - (id<Crim_sdk_callbackOnUserListener> _Nullable)userListener;
 @end
 
@@ -92,212 +161,461 @@ FOUNDATION_EXPORT NSString* _Nonnull const Crim_sdkLogoutTips;
 
 @end
 
+/**
+ * AcceptFriendReq 接受指定用户的好友申请。
+ */
 FOUNDATION_EXPORT void Crim_sdkAcceptFriendReq(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDHandleMsg);
 
+/**
+ * AcceptGrpReq 接受入群申请。
+ */
 FOUNDATION_EXPORT void Crim_sdkAcceptGrpReq(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable fromUserID, NSString* _Nullable handleMsg);
 
+/**
+ * AddBlack 将指定用户加入黑名单。
+ */
 FOUNDATION_EXPORT void Crim_sdkAddBlack(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable blackUserID, NSString* _Nullable ex);
 
+/**
+ * AddFriend 发起添加好友申请。
+ */
 FOUNDATION_EXPORT void Crim_sdkAddFriend(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDReqMsg);
 
 /**
- * AddUserCommand add to user's favorite
+ * AddUserCommand 新增一条用户命令（如收藏、快捷操作等）。
  */
 FOUNDATION_EXPORT void Crim_sdkAddUserCommand(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, int32_t Type, NSString* _Nullable uuid, NSString* _Nullable value);
 
+/**
+ * ChangeGrpMemberMute 设置或取消指定群成员的禁言时长。
+ */
 FOUNDATION_EXPORT void Crim_sdkChangeGrpMemberMute(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable userID, long mutedSeconds);
 
+/**
+ * ChangeGrpMute 设置或取消群全体禁言。
+ */
 FOUNDATION_EXPORT void Crim_sdkChangeGrpMute(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, BOOL isMute);
 
+/**
+ * ChangeInputStates 更新指定会话的正在输入状态。
+ */
 FOUNDATION_EXPORT void Crim_sdkChangeInputStates(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, BOOL focus);
 
+/**
+ * CheckFriend 检查指定用户是否为好友且在黑名单外。
+ */
 FOUNDATION_EXPORT void Crim_sdkCheckFriend(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDList);
 
 /**
- * CheckResourceLoad checks the SDK is resource load status.
+ * CheckResourceLoad 校验 SDK 已初始化且已登录，供对外接口调用前检查资源与登录状态。
  */
 FOUNDATION_EXPORT BOOL Crim_sdkCheckResourceLoad(Crim_sdkLoginMgr* _Nullable uSDK, NSString* _Nullable funcName, NSError* _Nullable* _Nullable error);
 
+/**
+ * ClearConversationAndDeleteAllMsg 清空指定会话并删除该会话下全部消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkClearConversationAndDeleteAllMsg(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
 
+/**
+ * CreateAdvancedQuoteMsg 创建带实体的高级引用消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateAdvancedQuoteMsg(NSString* _Nullable operationID, NSString* _Nullable text, NSString* _Nullable message, NSString* _Nullable messageEntityList);
 
+/**
+ * CreateAdvancedTextMsg 创建带实体（如 @、链接）的高级文本消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateAdvancedTextMsg(NSString* _Nullable operationID, NSString* _Nullable text, NSString* _Nullable messageEntityList);
 
+/**
+ * CreateCardMsg 创建名片消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateCardMsg(NSString* _Nullable operationID, NSString* _Nullable cardInfo);
 
+/**
+ * CreateCustomMsg 创建自定义消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateCustomMsg(NSString* _Nullable operationID, NSString* _Nullable data, NSString* _Nullable extension, NSString* _Nullable description);
 
+/**
+ * CreateFaceMsg 创建表情消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateFaceMsg(NSString* _Nullable operationID, long index, NSString* _Nullable data);
 
+/**
+ * CreateFileMsgByURL 根据文件 URL 信息创建文件消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateFileMsgByURL(NSString* _Nullable operationID, NSString* _Nullable fileBaseInfo);
 
+/**
+ * CreateFileMsgFromFullPath 根据本地文件完整路径与文件名创建文件消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateFileMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable fileFullPath, NSString* _Nullable fileName);
 
+/**
+ * CreateForwardMsg 创建转发消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateForwardMsg(NSString* _Nullable operationID, NSString* _Nullable m);
 
+/**
+ * CreateGrp 创建群组。
+ */
 FOUNDATION_EXPORT void Crim_sdkCreateGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupReqInfo);
 
+/**
+ * CreateImageMsgByURL 根据图片 URL 信息创建图片消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateImageMsgByURL(NSString* _Nullable operationID, NSString* _Nullable sourcePath, NSString* _Nullable sourcePicture, NSString* _Nullable bigPicture, NSString* _Nullable snapshotPicture);
 
+/**
+ * CreateImageMsgFromFullPath 根据本地图片完整路径创建图片消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateImageMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable imageFullPath);
 
+/**
+ * CreateLocationMsg 创建位置消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateLocationMsg(NSString* _Nullable operationID, NSString* _Nullable description, double longitude, double latitude);
 
+/**
+ * CreateMergerMsg 创建合并转发消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateMergerMsg(NSString* _Nullable operationID, NSString* _Nullable messageList, NSString* _Nullable title, NSString* _Nullable summaryList);
 
+/**
+ * CreateQuoteMsg 创建引用消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateQuoteMsg(NSString* _Nullable operationID, NSString* _Nullable text, NSString* _Nullable message);
 
+/**
+ * CreateSoundMsgByURL 根据语音 URL 信息创建语音消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgByURL(NSString* _Nullable operationID, NSString* _Nullable soundBaseInfo);
 
+/**
+ * CreateSoundMsgFromFullPath 根据本地语音路径与时长创建语音消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateSoundMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable soundPath, int64_t duration);
 
+/**
+ * CreateTextAtMsg 创建带 @ 用户列表的文本消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateTextAtMsg(NSString* _Nullable operationID, NSString* _Nullable text, NSString* _Nullable atUserList, NSString* _Nullable atUsersInfo, NSString* _Nullable message);
 
+/**
+ * CreateTextMsg 创建纯文本消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateTextMsg(NSString* _Nullable operationID, NSString* _Nullable text);
 
+/**
+ * CreateVideoMsgByURL 根据视频 URL 信息创建视频消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateVideoMsgByURL(NSString* _Nullable operationID, NSString* _Nullable videoBaseInfo);
 
+/**
+ * CreateVideoMsgFromFullPath 根据本地视频完整路径创建视频消息，返回消息 JSON。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkCreateVideoMsgFromFullPath(NSString* _Nullable operationID, NSString* _Nullable videoFullPath, NSString* _Nullable videoType, int64_t duration, NSString* _Nullable snapshotFullPath);
 
+/**
+ * DeleteAllMsgFromLocal 仅删除本地全部消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkDeleteAllMsgFromLocal(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * DeleteAllMsgFromLocalAndSvr 删除本地及服务端全部消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkDeleteAllMsgFromLocalAndSvr(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * DeleteConversationAndDeleteAllMsg 删除指定会话并删除该会话下全部消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkDeleteConversationAndDeleteAllMsg(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
 
+/**
+ * DeleteFriend 删除好友。
+ */
 FOUNDATION_EXPORT void Crim_sdkDeleteFriend(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable friendUserID);
 
+/**
+ * DeleteMsg 删除指定消息（本地并同步服务端）。
+ */
 FOUNDATION_EXPORT void Crim_sdkDeleteMsg(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable clientMsgID);
 
+/**
+ * DeleteMsgFromLocalStorage 从本地存储删除指定消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkDeleteMsgFromLocalStorage(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable clientMsgID);
 
 /**
- * DeleteUserCommand delete from user's favorite
+ * DeleteUserCommand 删除一条用户命令。
  */
 FOUNDATION_EXPORT void Crim_sdkDeleteUserCommand(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, int32_t Type, NSString* _Nullable uuid);
 
+/**
+ * DismissGrp 解散群组。
+ */
 FOUNDATION_EXPORT void Crim_sdkDismissGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID);
 
+/**
+ * FindMsgList 按条件查找消息列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkFindMsgList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable findMessageOptions);
 
+/**
+ * GetAdvancedHistoryMsgList 按条件拉取历史消息列表（顺序）。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetAdvancedHistoryMsgList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable getMessageOptions);
 
+/**
+ * GetAdvancedHistoryMsgListReverse 按条件拉取历史消息列表（逆序）。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetAdvancedHistoryMsgListReverse(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable getMessageOptions);
 
+/**
+ * GetAllConversationList 获取当前用户全部会话列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetAllConversationList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
 /**
- * GetAllUserCommands get user's favorite
+ * GetAllUserCommands 获取指定类型的全部用户命令列表。
  */
 FOUNDATION_EXPORT void Crim_sdkGetAllUserCommands(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, int32_t Type);
 
+/**
+ * GetAtAllTag 返回 @所有人 的展示标签字符串。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkGetAtAllTag(NSString* _Nullable operationID);
 
+/**
+ * GetBlackList 获取黑名单列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetBlackList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * GetConversationIDBySessionType 根据会话类型与来源 ID 计算会话 ID。
+ */
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkGetConversationIDBySessionType(NSString* _Nullable operationID, NSString* _Nullable sourceID, long sessionType);
 
+/**
+ * GetConversationListSplit 分页获取会话列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetConversationListSplit(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, long offset, long count);
 
 FOUNDATION_EXPORT int64_t Crim_sdkGetCurrentSvrTime(void);
 
+/**
+ * GetFriendList 获取好友列表，可选过滤黑名单。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetFriendList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, BOOL filterBlack);
 
+/**
+ * GetFriendListPage 分页获取好友列表，可选过滤黑名单。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetFriendListPage(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, int32_t offset, int32_t count, BOOL filterBlack);
 
+/**
+ * GetFriendReqListAsApplicant 以申请方身份获取自己发起的好友申请列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetFriendReqListAsApplicant(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req);
 
+/**
+ * GetFriendReqListAsRecipient 以被申请方身份获取好友申请列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetFriendReqListAsRecipient(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req);
 
+/**
+ * GetFriendReqUnhandledCount 获取未处理的好友申请数量。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetFriendReqUnhandledCount(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req);
 
+/**
+ * GetGrpMemberList 分页获取群成员列表，支持按角色过滤。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetGrpMemberList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, int32_t filter, int32_t offset, int32_t count);
 
+/**
+ * GetGrpMemberListByJoinTimeFilter 按加入时间范围与过滤条件分页获取群成员列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetGrpMemberListByJoinTimeFilter(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, int32_t offset, int32_t count, int64_t joinTimeBegin, int64_t joinTimeEnd, NSString* _Nullable filterUserIDList);
 
+/**
+ * GetGrpMemberOwnerAndAdmin 获取群的群主与管理员列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetGrpMemberOwnerAndAdmin(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID);
 
+/**
+ * GetGrpReqListAsApplicant 以申请方身份获取自己发起的入群申请列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetGrpReqListAsApplicant(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req);
 
+/**
+ * GetGrpReqListAsRecipient 以被申请方身份获取入群申请列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetGrpReqListAsRecipient(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req);
 
+/**
+ * GetGrpReqUnhandledCount 获取未处理的入群申请数量。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetGrpReqUnhandledCount(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req);
 
+/**
+ * GetInputStates 获取指定会话中指定用户的正在输入状态列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetInputStates(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable userID);
 
+/**
+ * GetJoinedGrpList 获取已加入的群列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetJoinedGrpList(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * GetJoinedGrpListPage 分页获取已加入的群列表。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetJoinedGrpListPage(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, int32_t offset, int32_t count);
 
 FOUNDATION_EXPORT long Crim_sdkGetLoginStatus(NSString* _Nullable operationID);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkGetLoginUserID(void);
 
+/**
+ * GetMultipleConversation 批量根据会话 ID 获取会话。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetMultipleConversation(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationIDList);
 
+/**
+ * GetOneConversation 按会话类型与来源 ID 获取或创建单条会话。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetOneConversation(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, int32_t sessionType, NSString* _Nullable sourceID);
 
 FOUNDATION_EXPORT NSString* _Nonnull Crim_sdkGetSdkVersion(void);
 
 /**
- * GetSelfUserInfo obtains the user's own information.
+ * GetSelfUserInfo 获取当前登录用户的自身信息。
  */
 FOUNDATION_EXPORT void Crim_sdkGetSelfUserInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * GetSpecifiedFriendsInfo 获取指定用户的好友信息，可选过滤黑名单。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetSpecifiedFriendsInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDList, BOOL filterBlack);
 
+/**
+ * GetSpecifiedGrpMembersInfo 获取指定群中指定用户的成员信息。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetSpecifiedGrpMembersInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable userIDList);
 
+/**
+ * GetSpecifiedGrpsInfo 根据群 ID 列表获取群信息。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetSpecifiedGrpsInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupIDList);
 
 /**
- * GetSubscribeUsersStatus Get the online status of subscribers.
+ * GetSubscribeUsersStatus 获取当前已订阅用户的在线状态列表。
  */
 FOUNDATION_EXPORT void Crim_sdkGetSubscribeUsersStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * GetTotalUnreadMsgCount 获取当前用户总会话未读消息数。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetTotalUnreadMsgCount(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
 /**
- * GetUserStatus Get the online status of users.
+ * GetUserStatus 获取指定用户的在线状态（内部通过订阅接口实现）。
  */
 FOUNDATION_EXPORT void Crim_sdkGetUserStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
+/**
+ * GetUsersInGrp 判断指定用户是否在群内并返回在群内的用户信息。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetUsersInGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable userIDList);
 
+/**
+ * GetUsersInfo 根据用户 ID 列表获取用户信息。
+ */
 FOUNDATION_EXPORT void Crim_sdkGetUsersInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
+/**
+ * HideAllConversations 隐藏当前用户全部会话。
+ */
 FOUNDATION_EXPORT void Crim_sdkHideAllConversations(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * HideConversation 隐藏指定会话。
+ */
 FOUNDATION_EXPORT void Crim_sdkHideConversation(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
 
+/**
+ * InitSDK 使用 JSON 配置初始化 SDK：解析 config、校验 sdkServer/PlatformID、初始化 HTTP 客户端与日志，再创建 LoginMgr 并执行其 InitSDK。
+
+流程概要：
+ 1. 若已初始化则直接返回 true
+ 2. 解析 config 为 configMap，校验 sdkServer 存在；再解析为 IMConfig，映射 LogLevel、校验 PlatformID
+ 3. InitAppClient(SkipVerifyCert)、拼 logFilePath、InitLoggerFromConfig 初始化日志
+ 4. 校验 sdkServer 含 "http"，创建 LoginMgr 并调用 UserForSDK.InitSDK(configArgs)
+ */
 FOUNDATION_EXPORT BOOL Crim_sdkInitSDK(NSString* _Nullable operationID, NSString* _Nullable config);
 
+/**
+ * InsertGrpMsgToLocalStorage 向本地存储插入单条群聊消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkInsertGrpMsgToLocalStorage(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable message, NSString* _Nullable groupID, NSString* _Nullable sendID);
 
+/**
+ * InsertSingleMsgToLocalStorage 向本地存储插入单条单聊消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkInsertSingleMsgToLocalStorage(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable message, NSString* _Nullable recvID, NSString* _Nullable sendID);
 
+/**
+ * InviteUserToGrp 邀请用户加入群组。
+ */
 FOUNDATION_EXPORT void Crim_sdkInviteUserToGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable reason, NSString* _Nullable userIDList);
 
+/**
+ * IsJoinGrp 判断当前用户是否已加入指定群。
+ */
 FOUNDATION_EXPORT void Crim_sdkIsJoinGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID);
 
+/**
+ * JoinGrp 申请加入群组。
+ */
 FOUNDATION_EXPORT void Crim_sdkJoinGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable reqMsg, int32_t joinSource, NSString* _Nullable ex);
 
+/**
+ * KickGrpMember 踢出指定群成员。
+ */
 FOUNDATION_EXPORT void Crim_sdkKickGrpMember(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable reason, NSString* _Nullable userIDList);
 
+/**
+ * Login 在 goroutine 中调用登录接口获取 IM 地址与 token，校准服务器时间后更新 LoginMgr 地址、启动日志上报，再通过 call 执行 UserForSDK.Login。
+
+流程概要：
+ 1. 组装 param（userId、platformId、requestId；有 token 或 appId+appSecret 时补充对应字段）
+ 2. 请求 /CRIM/v1/login，解析响应；code 非 0 或必要字段为空则 callback.OnError
+ 3. 若 svrTime 非 0 则计算 svrTimeAdjustValue 用于后续 GetCurrentSvrTime
+ 4. UpdateLoginMgrInfoAddr(wsAddr, svrAddr)，启动 LogReport.StartReport，call(callback, …, UserForSDK.Login, im_userId, im_token)
+ */
 FOUNDATION_EXPORT void Crim_sdkLogin(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userID, NSString* _Nullable token, NSString* _Nullable appId, NSString* _Nullable appSecret);
 
 FOUNDATION_EXPORT void Crim_sdkLogout(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
+/**
+ * Logs 写日志到本地并可选上报，用于 SDK 内部日志输出。
+ */
 FOUNDATION_EXPORT void Crim_sdkLogs(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, long logLevel, NSString* _Nullable file, long line, NSString* _Nullable msgs, NSString* _Nullable err, NSString* _Nullable keyAndValue);
 
+/**
+ * MarkAllConversationMsgAsRead 将所有会话标记为已读。
+ */
 FOUNDATION_EXPORT void Crim_sdkMarkAllConversationMsgAsRead(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
 
 /**
- * mark as read
+ * MarkConversationMsgAsRead 将指定会话标记为已读。
  */
 FOUNDATION_EXPORT void Crim_sdkMarkConversationMsgAsRead(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID);
 
+/**
+ * MarkMsgsAsReadByMsgID 按消息 ID 将指定消息标记为已读。
+ */
 FOUNDATION_EXPORT void Crim_sdkMarkMsgsAsReadByMsgID(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable clientMsgIDs);
 
 FOUNDATION_EXPORT void Crim_sdkNetworkStatusChanged(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID);
@@ -307,87 +625,183 @@ FOUNDATION_EXPORT Crim_sdkLoginMgr* _Nullable Crim_sdkNewLoginMgr(void);
 // skipped function ParseCRTokenAppID with unsupported parameter or return types
 
 
+/**
+ * QuitGrp 退出群组。
+ */
 FOUNDATION_EXPORT void Crim_sdkQuitGrp(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID);
 
+/**
+ * RefuseFriendReq 拒绝指定用户的好友申请。
+ */
 FOUNDATION_EXPORT void Crim_sdkRefuseFriendReq(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDHandleMsg);
 
+/**
+ * RefuseGrpReq 拒绝入群申请。
+ */
 FOUNDATION_EXPORT void Crim_sdkRefuseGrpReq(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable fromUserID, NSString* _Nullable handleMsg);
 
+/**
+ * RemoveBlack 将指定用户移出黑名单。
+ */
 FOUNDATION_EXPORT void Crim_sdkRemoveBlack(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable removeUserID);
 
+/**
+ * RevokeMsg 撤回指定会话的指定消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkRevokeMsg(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable clientMsgID);
 
+/**
+ * SearchConversation 按条件搜索会话。
+ */
 FOUNDATION_EXPORT void Crim_sdkSearchConversation(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable searchParam);
 
+/**
+ * SearchFriends 按关键词搜索好友。
+ */
 FOUNDATION_EXPORT void Crim_sdkSearchFriends(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable searchParam);
 
+/**
+ * SearchGrpMembers 按条件搜索群成员。
+ */
 FOUNDATION_EXPORT void Crim_sdkSearchGrpMembers(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable searchParam);
 
+/**
+ * SearchGrps 按条件搜索群。
+ */
 FOUNDATION_EXPORT void Crim_sdkSearchGrps(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable searchParam);
 
+/**
+ * SearchLocalMsgs 按条件搜索本地消息。
+ */
 FOUNDATION_EXPORT void Crim_sdkSearchLocalMsgs(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable searchParam);
 
+/**
+ * SendMsg 发送消息（支持在线/离线，回调结果）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSendMsg(id<Crim_sdk_callbackSendMsgCallBack> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable message, NSString* _Nullable recvID, NSString* _Nullable groupID, NSString* _Nullable offlinePushInfo, BOOL isOnlineOnly);
 
+/**
+ * SetAdvancedMsgListener 设置高级消息监听器（新消息、已读、撤回等）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetAdvancedMsgListener(id<Crim_sdk_callbackOnAdvancedMsgListener> _Nullable listener);
 
 FOUNDATION_EXPORT void Crim_sdkSetAppBackgroundStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, BOOL isBackground);
 
+/**
+ * SetAppBadge 设置应用角标未读数。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetAppBadge(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, int32_t appUnreadCount);
 
+/**
+ * SetBatchMsgListener 设置批量消息监听器。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetBatchMsgListener(id<Crim_sdk_callbackOnBatchMsgListener> _Nullable listener);
 
+/**
+ * SetConnListener 设置连接状态监听器（连接成功、断开、token 过期等）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetConnListener(id<Crim_sdk_callbackOnConnListener> _Nullable listener);
 
+/**
+ * SetConversation 更新指定会话的配置（如置顶、免打扰等）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetConversation(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable req);
 
+/**
+ * SetConversationDraft 设置指定会话的草稿文本。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetConversationDraft(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable draftText);
 
+/**
+ * SetConversationListener 设置会话监听器（会话列表、未读等变更）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetConversationListener(id<Crim_sdk_callbackOnConversationListener> _Nullable listener);
 
+/**
+ * SetCustomBusinessListener 设置自定义业务监听器。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetCustomBusinessListener(id<Crim_sdk_callbackOnCustomBusinessListener> _Nullable listener);
 
+/**
+ * SetFriendListener 设置好友关系监听器（好友申请、黑名单等）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetFriendListener(id<Crim_sdk_callbackOnFriendshipListener> _Nullable listener);
 
+/**
+ * SetGrpInfo 设置群信息。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetGrpInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupInfo);
 
+/**
+ * SetGrpListener 设置群组监听器（群信息、成员、申请等变更）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetGrpListener(id<Crim_sdk_callbackOnGrpListener> _Nullable listener);
 
+/**
+ * SetGrpMemberInfo 设置群成员信息（如群昵称、角色等）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetGrpMemberInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupMemberInfo);
 
+/**
+ * SetMsgKvInfoListener 设置消息 KV 扩展信息监听器。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetMsgKvInfoListener(id<Crim_sdk_callbackOnMsgKvInfoListener> _Nullable listener);
 
+/**
+ * SetMsgLocalEx 设置指定消息的本地扩展字段。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetMsgLocalEx(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable conversationID, NSString* _Nullable clientMsgID, NSString* _Nullable localEx);
 
 /**
- * SetSelfInfo sets the user's own information.
+ * SetSelfInfo 设置当前登录用户的自身信息。
  */
 FOUNDATION_EXPORT void Crim_sdkSetSelfInfo(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userInfo);
 
+/**
+ * SetUserListener 设置用户监听器（用户信息变更等）。
+ */
 FOUNDATION_EXPORT void Crim_sdkSetUserListener(id<Crim_sdk_callbackOnUserListener> _Nullable listener);
 
 /**
- * SubscribeUsersStatus Presence status of subscribed users.
+ * SubscribeUsersStatus 订阅指定用户的在线状态变化。
  */
 FOUNDATION_EXPORT void Crim_sdkSubscribeUsersStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
+/**
+ * TransferGrpOwner 转让群主。
+ */
 FOUNDATION_EXPORT void Crim_sdkTransferGrpOwner(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable groupID, NSString* _Nullable newOwnerUserID);
 
+/**
+ * TypingStatusUpdate 上报正在输入状态给指定接收方。
+ */
 FOUNDATION_EXPORT void Crim_sdkTypingStatusUpdate(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable recvID, NSString* _Nullable msgTip);
 
 FOUNDATION_EXPORT void Crim_sdkUnInitSDK(NSString* _Nullable operationID);
 
 /**
- * UnsubscribeUsersStatus Unsubscribe a user's presence.
+ * UnsubscribeUsersStatus 取消订阅指定用户的在线状态。
  */
 FOUNDATION_EXPORT void Crim_sdkUnsubscribeUsersStatus(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable userIDs);
 
+/**
+ * UpdateFcmToken 更新 FCM 推送令牌及过期时间。
+ */
 FOUNDATION_EXPORT void Crim_sdkUpdateFcmToken(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable fcmToken, int64_t expireTime);
 
+/**
+ * UpdateFriends 批量更新好友信息（如备注）。
+ */
 FOUNDATION_EXPORT void Crim_sdkUpdateFriends(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req);
 
+/**
+ * UploadFile 上传文件到服务器，支持进度回调。
+ */
 FOUNDATION_EXPORT void Crim_sdkUploadFile(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, NSString* _Nullable req, id<Crim_sdk_callbackUploadFileCallback> _Nullable progress);
 
+/**
+ * UploadLogs 上传日志到服务器，支持进度回调。
+ */
 FOUNDATION_EXPORT void Crim_sdkUploadLogs(id<Crim_sdk_callbackBase> _Nullable callback, NSString* _Nullable operationID, long line, NSString* _Nullable ex, id<Crim_sdk_callbackUploadLogProgress> _Nullable progress);
 
 FOUNDATION_EXPORT void Crim_sdkWriteLog(NSString* _Nullable operationID, int32_t level, NSString* _Nullable content);
